@@ -17,8 +17,8 @@ public function index() {
 		[
 		// 'contentEditable' => sizeof(array_intersect(['admin','mp3'],$this->View->model->userdata['urole'])) ? ' contenteditable="true" ' : '',
 		'contentEditable' => '',
-		'title' => 'Маршрут 3',
-		'page' => 'mp3/index',
+		'title' => 'Московская биржа | Фонды',
+		'page' => 'moex/index',
         'js'=>["public/js/datatables/jquery.dataTables.min.js","public/js/datatables/dataTables.bootstrap.js","public/js/bootstrap3-typeahead.min.js"],
 		'css'=>["public/js/datatables/jquery.dataTables.css","public/js/datatables/dataTables.bootstrap.css"],
 		]		
