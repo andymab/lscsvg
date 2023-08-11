@@ -20,20 +20,41 @@ online справочник запросов http://iss.moex.com/iss/reference/
 
 class Moex  extends \libs\Controller
 {
-    
+
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function get_markets_indicativerates_securities(){
-        echo json_encode( Func::message(true,'Запись получена',['query'=>$this->getExchangeRate('iss/statistics/engines/futures/markets/indicativerates/securities.json')]));
+    public function index()
+    {
+        $this->View->set_model(
+            [
+                //'contentEditable' => sizeof(array_intersect(['admin','mp3'],$this->View->model->userdata['urole'])) ? ' contenteditable="true" ' : '',
+                'contentEditable' =>  '',
+                'title' => 'Московская биржа',
+                'page' => 'moex/index',
+                'js' => [],
+                'css' => [],
+                //          'js'=>["public/js/datatables/jquery.dataTables.min.js","public/js/datatables/dataTables.bootstrap.js","public/js/bootstrap3-typeahead.min.js"],
+                //          'css'=>["public/js/datatables/jquery.dataTables.css","public/js/datatables/dataTables.bootstrap.css"],
+            ]
+        );
+        $this->View->render();
+    }
+
+
+
+
+    public function get_markets_indicativerates_securities()
+    {
+        echo json_encode(Func::message(true, 'Запись получена', ['query' => $this->getExchangeRate('iss/statistics/engines/futures/markets/indicativerates/securities.json')]));
     }
 
     public function getExchangeRate($url)
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'http://iss.moex.com/'.$url);
+        curl_setopt($curl, CURLOPT_URL, 'http://iss.moex.com/' . $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $out = curl_exec($curl);
         curl_close($curl);
